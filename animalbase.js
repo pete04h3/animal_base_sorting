@@ -99,3 +99,43 @@ function displayAnimal(animal) {
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
 }
+
+//sort
+
+const animals = [
+  {
+    name: "Mandu",
+    type: "cat"
+  },
+  {
+    name: "Mia",
+    type: "cat"
+  },
+  {
+    name: "LeeLoo",
+    type: "dog"
+  },
+  {
+    name: "Toothless",
+    type: "dragon"
+  },
+  {
+    name: "ScoobyDoo",
+    type: "dog"
+  },
+  {
+    name: "Horsey",
+    type: "horse"
+  }
+];
+
+function compareName(a, b) {
+  if (a.name < b.name) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+
+allAnimals.sort(compareName);
+console.log(compareName);
