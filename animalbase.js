@@ -16,19 +16,6 @@ function start() {
   console.log("ready");
 
   // TODO: Add event-listeners to filter and sort buttons
-  /*   let catButton = document.querySelector("[data-filter=cat]");
-  let dogButton = document.querySelector("[data-filter=dog]");
-  let allButton = document.querySelector("[data-filter=all]");
-
-  catButton.addEventListener("click", showCats);
-  dogButton.addEventListener("click", showDogs);
-  allButton.addEventListener("click", showAll); */
-
-  /*   let buttons = document.querySelectorAll("[data-action='filter']");
-
-  buttons.forEach(button => {
-    button.addEventListener("click", filterbutton);
-  }); */
 
   document.querySelector("[data-filter='cat").addEventListener("click", filterCats);
   document.querySelector("[data-filter='dog").addEventListener("click", filterDogs);
@@ -36,16 +23,6 @@ function start() {
 
   loadJSON();
 }
-
-/* function filterbutton() {
-  console.log("filter button");
-  console.log(this);
-
-  const filter = this.dataset.filter;
-  setFilter(filter);
-}
-
-function setFilter(filter) {} */
 
 function filterCats() {
   const onlyCats = allAnimals.filter(isCat);
