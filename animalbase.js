@@ -17,9 +17,14 @@ function start() {
 
   // TODO: Add event-listeners to filter and sort buttons
 
-  document.querySelector("[data-filter='cat").addEventListener("click", filterCats);
-  document.querySelector("[data-filter='dog").addEventListener("click", filterDogs);
-  document.querySelector("[data-filter='all").addEventListener("click", showAll);
+  document.querySelector("[data-filter='cat']").addEventListener("click", filterCats);
+  document.querySelector("[data-filter='dog']").addEventListener("click", filterDogs);
+  document.querySelector("[data-filter='all']").addEventListener("click", showAll);
+
+  document.querySelector("[data-sort='name']").addEventListener("click", sortingName);
+  document.querySelector("[data-sort='type']").addEventListener("click", sortingType);
+  document.querySelector("[data-sort='desc']").addEventListener("click", sortingDesc);
+  document.querySelector("[data-sort='age']").addEventListener("click", sortingAge);
 
   loadJSON();
 }
@@ -128,9 +133,65 @@ const animals = [
     type: "horse"
   }
 ];
+function sortingName() {
+  const sortName = allAnimals.sort(compareName);
+  displayList(sortName);
+
+  console.log(sortingName);
+}
+function sortingType() {
+  const sortType = allAnimals.sort(compareType);
+  displayList(sortType);
+
+  console.log(sortingType);
+}
+function sortingDesc() {
+  const sortDesc = allAnimals.sort(compareDesc);
+  displayList(sortDesc);
+
+  console.log(sortingDesc);
+}
+function sortingAge() {
+  const sortAge = allAnimals.sort(compareAge);
+  displayList(sortAge);
+
+  console.log(sortingAge);
+}
 
 function compareName(a, b) {
   if (a.name < b.name) {
+    return -1;
+  } else if (a.name > b.name) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+
+function compareType(a, b) {
+  if (a.type < b.type) {
+    return -1;
+  } else if (a.type > b.type) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+
+function compareDesc(a, b) {
+  if (a.desc < b.desc) {
+    return -1;
+  } else if (a.desc > b.desc) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+
+function compareAge(a, b) {
+  if (a.age < b.age) {
+    return -1;
+  } else if (a.age > b.age) {
     return -1;
   } else {
     return 1;
