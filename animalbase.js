@@ -53,6 +53,7 @@ function setStar(animal) {
 //only one type of animal can be a
 
 function checkWinner(animal) {
+  winners = currentList.filter(animal => animal.winner === true);
   const winnerType = winners.some(winner => {
     return winner.type === animal.type;
   });
@@ -60,18 +61,44 @@ function checkWinner(animal) {
     animal.winner = false;
   } else {
     if (winnerType) {
+      oneWinnerOfEachType();
       animal.winner = false;
     } else if (winners.length == 2) {
+      removeOneToAddAnother();
       animal.winner = false;
     } else {
       animal.winner = true;
     }
   }
 
-  winners = currentList.filter(animal => animal.winner === true);
   console.log(winners);
   console.log(animal.winner);
   displayList(currentList);
+}
+
+//Eventslisterners on buttons in dialog popups
+//Printing the correct text string into dialog popups
+
+function oneWinnerOfEachType() {
+  document.querySelector("#onlyonekind").classList.add("show");
+  document.querySelector("#onlyonekind .closebutton").addEventListener("click", closeDialog);
+  console.log(oneWinnerOfEachType);
+  document.querySelector("#onlyonekind .animal1").textContent = winners[0].name + " " + winners[0].type;
+}
+
+function removeOneToAddAnother() {
+  document.querySelector("#onlytwowinners").classList.add("show");
+  document.querySelector("#onlytwowinners .closebutton").addEventListener("click", closeDialog);
+  console.log(removeOneToAddAnother);
+  document.querySelector("#onlytwowinners .animal1").textContent = winners[0].name + " " + winners[0].type;
+  document.querySelector("#onlytwowinners .animal2").textContent = winners[1].name + " " + winners[1].type;
+}
+
+//DIALOG BOX
+
+function closeDialog() {
+  document.querySelector("#onlytwowinners").classList.remove("show");
+  document.querySelector("#onlyonekind").classList.remove("show");
 }
 
 //Filtering
