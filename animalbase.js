@@ -61,9 +61,11 @@ function checkWinner(animal) {
     animal.winner = false;
   } else {
     if (winnerType) {
+      //calling oneWinnerOfEachType function
       oneWinnerOfEachType();
       animal.winner = false;
     } else if (winners.length == 2) {
+      //calling removeOneToAddAnother function
       removeOneToAddAnother();
       animal.winner = false;
     } else {
@@ -82,6 +84,9 @@ function checkWinner(animal) {
 function oneWinnerOfEachType() {
   document.querySelector("#onlyonekind").classList.add("show");
   document.querySelector("#onlyonekind .closebutton").addEventListener("click", closeDialog);
+  document.querySelector("#onlyonekind .removebutton1").addEventListener("click", () => {
+    closeDialog();
+  });
   console.log(oneWinnerOfEachType);
   document.querySelector("#onlyonekind .animal1").textContent = winners[0].name + " " + winners[0].type;
 }
@@ -89,6 +94,9 @@ function oneWinnerOfEachType() {
 function removeOneToAddAnother() {
   document.querySelector("#onlytwowinners").classList.add("show");
   document.querySelector("#onlytwowinners .closebutton").addEventListener("click", closeDialog);
+  document.querySelector("#onlytwowinners .removebutton1").addEventListener("click", () => {
+    removeOneAnimal();
+  });
   console.log(removeOneToAddAnother);
   document.querySelector("#onlytwowinners .animal1").textContent = winners[0].name + " " + winners[0].type;
   document.querySelector("#onlytwowinners .animal2").textContent = winners[1].name + " " + winners[1].type;
@@ -99,6 +107,13 @@ function removeOneToAddAnother() {
 function closeDialog() {
   document.querySelector("#onlytwowinners").classList.remove("show");
   document.querySelector("#onlyonekind").classList.remove("show");
+  start();
+}
+
+function removeOneAnimal() {
+  document.querySelector("#onlytwowinners").classList.remove("show");
+  // TODO: Remove winner icon and make the selected animal being removed
+  // to false again. NEED HELP!
 }
 
 //Filtering
